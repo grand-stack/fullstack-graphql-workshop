@@ -10,7 +10,7 @@ A GRANDstack application uses GraphQL, React, Apollo, and Neo4j Database.
 
 ## `create-grandstack-app`
 
-The `create-grandstack-app` CLI can be used to create and configure a new GRANDstack application. The skeleton application is a business reviews application
+The `create-grandstack-app` CLI can be used to create and configure a new GRANDstack application. The skeleton application is a business reviews application.
 
 ![create-grandstack-app CLI](img/create-grandstack-app.gif)
 
@@ -59,7 +59,7 @@ You should see something like this:
 
 ## Deploying To Netlify
 
-Now let's deploy our application using Netlify. Netlify allows use to build and host static content as well as Lambda functions which we'll use to serve our GraphQL API.
+Now let's deploy our application using [Netlify](https://www.netlify.com/). Netlify allows use to build and host static content as well as Lambda functions which we'll use to serve our GraphQL API. Netlify has a free tier that will allow us to deploy applications without entering a credit card.
 
 ## Exercise ⏲️ `15 minutes`
 
@@ -69,4 +69,6 @@ Now let's deploy our application using Netlify. Netlify allows use to build and 
 * Be sure to specify the `NEO4J_URI`, `NEO4J_USER`, and `NEO4J_PASSWORD` environment variables in the Netlify console to connect to your Neo4j Sandbox instance
 * Deploy your application!
 
-Alternatively, try the "Deploy to Netlify" button from the [GRANDstack Starter Project repository.](https://github.com/grand-stack/grand-stack-starter)
+Alternatively, try the "Deploy to Netlify" or "Deploy to Vercel" buttons from the [GRANDstack Starter Project repository.](https://github.com/grand-stack/grand-stack-starter)
+
+BONUS - Deploy the application using DigitalOcean App Platform.
