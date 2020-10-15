@@ -36,7 +36,7 @@ In this module we'll use the `create-grandstack-app` CLI to create a fullstack s
 
 In this module we add authentication to our movies search GraphQL API using the `graphql-auth-directives` package and JSON Web Token (JWT).
 
-Each module should take roughly 60-90 minutes to complete.
+Each module should take roughly 90 minutes to complete.
 
 Let's [get started!](1_INTRO_TO_NEO4J_GRAPHQL)
 

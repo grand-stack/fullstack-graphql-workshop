@@ -30,11 +30,34 @@ GraphQL is an API query language and runtime for fulfilling those queries. Graph
 
 #### GraphQL Type Definitions
 
+GraphQL type definitions define the data available in the API. These type definitions are typically defined using the GraphQL Schema Definition Language (SDL), a language agnostic way of expressing the types. However, type definitions can be also be defined programmatically.
+
+<img src="img/typedefs.png" width=500 />
+
+
 #### GraphQL Operations
+
+Each GraphQL operation is either a Query, Mutation, or Subscription. The fields of the Query, Mutation, and Subscription types define the entry points for an operation. Each operation starts at the field of one of these types.
+
+<img src="img/operation.png" width=500 />
+
 
 #### The Selection Set
 
-// TODO: selection set, resolvers, operations, type definitions
+The selection set specifies the fields to be returned by a GraphQL operation and 
+
+<img src="img/selectionset.png" width=500 />
+
+The response to a GraphQL request matches the shape of the selection set.
+
+<img src="img/result.png" width=500 />
+
+#### Resolvers
+
+In GraphQL resolvers are the functions responsible for actually fulfilling the GraphQL operation. In the context of a query, this means fetching data from a data layer.
+
+<img src="img/resolvers.png" width=500 />
+
 
 ### Benefits of GraphQL
 
@@ -76,8 +99,6 @@ At a high level the goals are:
 * Developer productivity
 * Extensible
 * Performance
-
-
 
 
 ### Goals of Neo4j GraphQL
