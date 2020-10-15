@@ -95,33 +95,63 @@ The fundamental goal of the Neo4j GraphQL integrations is to make it easier to b
 
 At a high level the goals are:
 
-* Reduce boilerplate
+* Reducing boilerplate
 * Developer productivity
-* Extensible
+* Extensibility
 * Performance
-
 
 ### Goals of Neo4j GraphQL
 
 #### GraphQL First Development
 
+#### Auto-generate GraphQL CRUD API
+
+This includes
+
+* Query & Mutation types (an API entrypoint for each type defined in the schema)
+* Ordering
+* Pagination
+* Complex filtering
+* DateTime & Spatial types and filtering
+
+<img src="img/crud.png" width=500 />
+
 #### Generate Cypher From GraphQL Operations
 
-#### G
+To reduce boilerplate and optimize for performance Neo4j GraphQL automatically generates a single database query for any arbitrary GraphQL request. This means the developer does not need to implement resolvers and each GraphQL operation results in a single roundtrip to the database.
+
+<img src="img/generate.png" width=500 />
+
+#### Extend GraphQL With Cypher
+
+To add custom logic beyond simple CRUD operations we can use the `@cypher` GraphQL schema directive to add computed fields bound to a Cypher query to the GraphQL schema.
+
+<img src="img/cypher.png" width=500 />
 
 ## Neo4j GraphQL Implementations
 
-There are
+There are multiple implementations of Neo4j GraphQL, in this workshop we focus on `neo4j-graphql.js`
+
+![](img/implementations.png)
 
 ### `neo4j-graphql.js`
 
+We will use `neo4j-graphql.js` to build GraphQL APIs in this workshop. `neo4j-graphql.js` is a JavaScript library designed to work with any Node.js GraphQL server.
 
+<img src="img/neo4jgraphqljs1.png" width=500 />
+
+The two main features provided by `neo4j-graphql.js` are 
+
+1. Schema augmentation
+1. GraphQL to Cypher transpilation
+
+<img src="img/neo4jgraphqljs2.png" width=500 />
 
 ## Exploring The Movies GraphQL API
 
-### Exercise ⏲️ `15 minutes`
-
 To familiarize yourself with GraphQL and writing GraphQL queries, explore the public movies GraphQL API at https://movies.grandstack.io. Open the URL in a web browser to access GraphQL Playground and explore the DOCS and SCHEMA tab to see the type definitions.
+
+### Exercise ⏲️ `15 minutes`
 
 Try writing queries to answer the following questions:
 
@@ -132,7 +162,9 @@ Try writing queries to answer the following questions:
 
 ## GraphQL Architect For Neo4j Desktop
 
-### Overview
+GraphQL Architect is a Graph App for Neo4j Desktop that allows us to build, query, and deploy GraphQL APIs backed by Neo4j by writing only GraphQL SDL.
+
+![](img/graphql-architect-usage1.png)
 
 Read more about GraphQL Architect in [this article.](https://medium.com/neo4j/introducing-graphql-architect-19b0f2035e21)
 
@@ -150,7 +182,7 @@ Next, activate the database in Neo4j Desktop you'd like to use with GraphQL Arch
 
 ![](img/graphql-architect-install3.png)
 
-This will launch the GraphQL Architect graph app. On first 
+This will launch the GraphQL Architect graph app. On first launch GraphQL Architect will inspect the data in your database and generate GraphQL type definitions for the data model.
 
 ![](img/graphql-architect-overview.png)
 
@@ -170,7 +202,7 @@ Install, connect to Neo4j Sandbox.
 
 ### The Neo4j GraphQL API
 
-![](img/graphql-architect-usage1.png)
+
 
 
 #### Query Fields
@@ -183,14 +215,17 @@ Relationship fields
 
 #### Mutations
 
-### Exercise ⏲️ `5 minutes`
+### Exercise ⏲️ `10 minutes`
 
-1. Execute a GraphQL query to find any movies that the actor "Emil Eifrem" acted in. 
+Write GraphQL mutations to accomplish the following:
+
+1. Create a new Business node. You can make up a fake business or use your favorite store.
+2. Connect this new business to a Category node
+3. Add a Review for this business.
 
 ### `@cypher` Schema Directive
 
-We can add custom logic to our API by using the `@cypher` GraphQL schema directive. Schema directives in GraphQL are used to 
-
+We can add custom logic to our API by using the `@cypher` GraphQL schema directive. Schema directives in GraphQL are used to indicate custom logic and the `@cypher` schema directive is used to bind a Cypher query to a computed field in the GraphQL schema.
 
 Here we extend the Business type to include a computed field `average_stars`.
 
@@ -199,6 +234,8 @@ extend type Business {
    average_reviews: Float @cypher(statement: "MATCH (this)<-[:REVIEWS]-(r:Review) RETURN avg(r.stars)")
 }
 ```
+
+The `@cypher` directive takes a single argument `statement` which is a Cypher query. The `this` Cypher variable is bound to the current object being resolved.
 
 ### Exercise ⏲️ `15 minutes`
 
