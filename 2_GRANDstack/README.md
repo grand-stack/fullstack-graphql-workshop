@@ -15,6 +15,9 @@ Run `create-grandstack-app` and get it working with a new blank sandbox
 
 Backup: use Codesandbox and the demo.neo4jlabs.com database
 
+* [Codesandbox for API application](https://codesandbox.io/s/github/grand-stack/fullstack-graphql-workshop/tree/master/2_GRANDstack/api)
+* [Codesandbo for React application](https://codesandbox.io/s/github/grand-stack/fullstack-graphql-workshop/tree/master/2_GRANDstack/web-react)
+
 ## Code Walkthrough
 
 ## Modify For Movies Application
