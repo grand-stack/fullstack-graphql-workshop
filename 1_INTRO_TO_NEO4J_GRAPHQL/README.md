@@ -242,7 +242,7 @@ The `@cypher` directive takes a single argument `statement` which is a Cypher qu
 In this exercise we will add a GraphQL field `recommended` to the User type that will be used to find businesses to recommend. We'll use the `@cypher` schema directive to map this field to a Cypher query.
 
 1. Write a Cypher query to recommended businesses for a user. This could be done by looking at overlapping businesses reviewed, user ratings, graph algorithms using the Graph Data Science library or some other method. Feel free to be creative!
-1. Add a new field `recommended` to the Movie GraphQL type definition that returns a list of Movie objects
+1. Add a new field `recommended` to the User GraphQL type definition that returns a list of Business objects that are recommendations for that user.
 1. Add the `@cypher` schema directive to the User type and adapt the Cypher statement so that it returns 
 
 > Hint: Be sure to use the `this` keyword to refer to the currently resolved `User` node.
