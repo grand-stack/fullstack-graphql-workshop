@@ -194,9 +194,9 @@ This will launch the GraphQL Architect graph app. On first launch GraphQL Archit
 
 ### Exercise ⏲️ `15 minutes`
 
-Install, connect to Neo4j Sandbox.
+Install GraphQL Architect, connect to Neo4j Sandbox, load sample dataset.
 
-1. Log in to Neo4j Desktop and launch a new "Blank" project.
+1. Log in to [Neo4j Sandbox](https://neo4j.com/sandbox) and launch a new "Blank" project.
 1. Launch Neo4j Browser and run the command `:play grandstack` to load the GRANDstack browser guide
 1. Click the query embedded in the GRANDstack browser guide and execute it to load our sample dataset
 1. Connect this Sandbox instance to Neo4j Desktop by creating a new remote graph.
@@ -248,7 +248,7 @@ In this exercise we will add a GraphQL field `recommended` to the User type that
 > Hint: Be sure to use the `this` keyword to refer to the currently resolved `User` node.
 
 
-All done - that's it for this module! Let's [continue on to Module 2](2_GRANDstack) where we'll take a look at using neo4j-graphql.js in a fullstack application.
+All done - that's it for this module! Let's [continue on to Module 2](../2_GRANDstack) where we'll take a look at using neo4j-graphql.js in a fullstack application.
 
 
 
