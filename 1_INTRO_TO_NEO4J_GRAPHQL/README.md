@@ -247,6 +247,10 @@ In this exercise we will add a GraphQL field `recommended` to the User type that
 
 > Hint: Be sure to use the `this` keyword to refer to the currently resolved `User` node.
 
+### BONUS: `@cypher` Directive Query and Mutation Fields
+
+Let's create a new mutation field that does all the operations from the mutation exercise (create business, assign categories, add review) all in one step!
+
 
 All done - that's it for this module! Let's [continue on to Module 2](../2_GRANDstack) where we'll take a look at using neo4j-graphql.js in a fullstack application.
 
