@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this module we
+In this module we take a look at Neo4j, GraphQL, and the Neo4j GraphQL integrations. First, we explore writing GraphQL queries against a demo GraphQL API of movies. Then we use the GraphQL Architect graph app for Neo4j Desktop to see how we can build our own GraphQL APIs using Neo4j GraphQL.
 
 ## What is Neo4j?
 
@@ -113,19 +113,84 @@ Try writing queries to answer the following questions:
 
 ### Overview
 
-### Installation
+Read more about GraphQL Architect in [this article.](https://medium.com/neo4j/introducing-graphql-architect-19b0f2035e21)
 
-### Exercise ⏲️ `10 minutes`
+### Installation And Usage
 
-Install, connect to Neo4j Recommendations sandbox.
+To install GraphQL Architect, first open Neo4j Desktop then open the Graph Apps Gallery:
+
+![](img/graphql-architect-install1.png)
+
+The Graph Apps Gallery allows you to install Graph Apps in Neo4j Desktop. Select the "Install" button for GraphQL Architect:
+
+![](img/graphql-architect-install2.png)
+
+Next, activate the database in Neo4j Desktop you'd like to use with GraphQL Architect, select the "Open" drop-down and choose "GraphQL Architect". You can also launch GraphQL Architect by clicking its icon in the Graph Apps drawer in Neo4j Desktop.
+
+![](img/graphql-architect-install3.png)
+
+This will launch the GraphQL Architect graph app. On first 
+
+![](img/graphql-architect-overview.png)
+
+### Exercise ⏲️ `15 minutes`
+
+Install, connect to Neo4j Sandbox.
+
+1. Log in to Neo4j Desktop and launch a new "Blank" project.
+1. Launch Neo4j Browser and run the command `:play grandstack` to load the GRANDstack browser guide
+1. Click the query embedded in the GRANDstack browser guide and execute it to load our sample dataset
+1. Connect this Sandbox instance to Neo4j Desktop by creating a new remote graph.
+1. Install and launch the GraphQL Architect Graph App.
+1. Start the local GraphQL server and navigate to the GraphiQL pane in GraphQL Architect.
+1. Select the "Docs" tab to review the API schema.
+1. Execute a GraphQL query to find all businesses and any reviews for each business.
+
 
 ### The Neo4j GraphQL API
 
+![](img/graphql-architect-usage1.png)
+
+
+#### Query Fields
+
+Arguments
+
+Filtering
+
+Relationship fields
+
+#### Mutations
+
+### Exercise ⏲️ `5 minutes`
+
+1. Execute a GraphQL query to find any movies that the actor "Emil Eifrem" acted in. 
+
 ### `@cypher` Schema Directive
 
-### Exercise ⏲️ `10 minutes`
+We can add custom logic to our API by using the `@cypher` GraphQL schema directive. Schema directives in GraphQL are used to 
 
-Add a movie recommendation query
+
+Here we extend the Business type to include a computed field `average_stars`.
+
+```GraphQL
+extend type Business {
+   average_reviews: Float @cypher(statement: "MATCH (this)<-[:REVIEWS]-(r:Review) RETURN avg(r.stars)")
+}
+```
+
+### Exercise ⏲️ `15 minutes`
+
+In this exercise we will add a GraphQL field `recommended` to the User type that will be used to find businesses to recommend. We'll use the `@cypher` schema directive to map this field to a Cypher query.
+
+1. Write a Cypher query to recommended businesses for a user. This could be done by looking at overlapping businesses reviewed, user ratings, graph algorithms using the Graph Data Science library or some other method. Feel free to be creative!
+1. Add a new field `recommended` to the Movie GraphQL type definition that returns a list of Movie objects
+1. Add the `@cypher` schema directive to the User type and adapt the Cypher statement so that it returns 
+
+> Hint: Be sure to use the `this` keyword to refer to the currently resolved `User` node.
+
+
+All done - that's it for this module! Let's [continue on to Module 2](2_GRANDstack) where we'll take a look at using neo4j-graphql.js in a fullstack application.
 
 
 
