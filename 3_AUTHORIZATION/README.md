@@ -38,6 +38,8 @@ For example, here is the token generated using the above payload:
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1MSIsIm5hbWUiOiJXaWxsaWFtIEx5b24iLCJlbWFpbCI6IndpbGxAZ3JhbmRzdGFjay5pbyIsImlhdCI6MTYwMjc2NTU1NX0._gOShe-H1G1NR69s4dmlnjnrB1d88xsLGrKUU4f_poI
 ```
 
+![](jwt-io.png)
+
 ## Exercise ⏲️ `15 minutes`
 
 * Protect the Business address field with the `@isAuthenticated` schema directive
