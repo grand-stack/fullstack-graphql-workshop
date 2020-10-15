@@ -44,7 +44,7 @@ Each GraphQL operation is either a Query, Mutation, or Subscription. The fields 
 
 #### The Selection Set
 
-The selection set specifies the fields to be returned by a GraphQL operation and 
+The selection set specifies the fields to be returned by a GraphQL operation and can be thought of as a traversal through the data graph.
 
 <img src="img/selectionset.png" width=500 />
 
@@ -104,6 +104,10 @@ At a high level the goals are:
 
 #### GraphQL First Development
 
+GraphQL type definitions can drive the database data model, which means we don't need to maintain two separate schemas.
+
+<img src="img/graphqlfirst.png" >
+
 #### Auto-generate GraphQL CRUD API
 
 This includes
@@ -114,19 +118,19 @@ This includes
 * Complex filtering
 * DateTime & Spatial types and filtering
 
-<img src="img/crud.png" width=500 />
+<img src="img/crud.png" />
 
 #### Generate Cypher From GraphQL Operations
 
 To reduce boilerplate and optimize for performance Neo4j GraphQL automatically generates a single database query for any arbitrary GraphQL request. This means the developer does not need to implement resolvers and each GraphQL operation results in a single roundtrip to the database.
 
-<img src="img/generate.png" width=500 />
+<img src="img/generate.png" />
 
 #### Extend GraphQL With Cypher
 
 To add custom logic beyond simple CRUD operations we can use the `@cypher` GraphQL schema directive to add computed fields bound to a Cypher query to the GraphQL schema.
 
-<img src="img/cypher.png" width=500 />
+<img src="img/cypher.png" />
 
 ## Neo4j GraphQL Implementations
 
@@ -138,18 +142,20 @@ There are multiple implementations of Neo4j GraphQL, in this workshop we focus o
 
 We will use `neo4j-graphql.js` to build GraphQL APIs in this workshop. `neo4j-graphql.js` is a JavaScript library designed to work with any Node.js GraphQL server.
 
-<img src="img/neo4jgraphqljs1.png" width=500 />
+<img src="img/neo4jgraphqljs1.png" />
 
 The two main features provided by `neo4j-graphql.js` are 
 
 1. Schema augmentation
 1. GraphQL to Cypher transpilation
 
-<img src="img/neo4jgraphqljs2.png" width=500 />
+<img src="img/neo4jgraphqljs2.png" width=700 />
 
 ## Exploring The Movies GraphQL API
 
 To familiarize yourself with GraphQL and writing GraphQL queries, explore the public movies GraphQL API at https://movies.grandstack.io. Open the URL in a web browser to access GraphQL Playground and explore the DOCS and SCHEMA tab to see the type definitions.
+
+<img src="img/moviesapi.png" >
 
 ### Exercise ⏲️ `15 minutes`
 
@@ -202,18 +208,12 @@ Install, connect to Neo4j Sandbox.
 
 ### The Neo4j GraphQL API
 
+Let's use the GraphiQL documentation tab to see how the following are added to the GraphQL schema:
 
-
-
-#### Query Fields
-
-Arguments
-
-Filtering
-
-Relationship fields
-
-#### Mutations
+* Query & Mutation fields
+* Relationship fields
+* Field arguments
+* Filter arguments
 
 ### Exercise ⏲️ `10 minutes`
 
